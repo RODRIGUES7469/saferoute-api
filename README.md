@@ -9,8 +9,8 @@ Global Solution 2026.2 · FIAP · Engenharia de Software · Domain Driven Design
 | Gusthavo Costa de Melo | 561330 |
 
 - **Repositório:** https://github.com/RODRIGUES7469/saferoute-api
-- **Deploy (Render):** `https://SEU-SERVICO.onrender.com` ← substituir após o deploy
-- **Swagger:** `https://SEU-SERVICO.onrender.com/swagger-ui.html`
+- **Deploy (Render):** https://saferoute-api-04af.onrender.com
+- **Swagger:** https://saferoute-api-04af.onrender.com/swagger-ui.html
 
 ## O que a API faz
 
