@@ -49,7 +49,16 @@ public class GlobalExceptionHandler {
         }
         log.error("Erro de banco de dados em {}", req.getRequestURI(), ex);
         return resposta(HttpStatus.SERVICE_UNAVAILABLE,
-                "Não foi possível acessar o banco de dados. Tente novamente em instantes.", req, List.of());
+                "Não foi possível acessar o banco de dados. Tente novamente em instantes.", req, List.of(causaRaiz(ex)));
+    }
+
+    /** Primeira linha da causa raiz (ex.: "ORA-00942: tabela ou view não existe"), sem expor o stack trace. */
+    private static String causaRaiz(Throwable ex) {
+        Throwable t = ex;
+        while (t.getCause() != null && t.getCause() != t) t = t.getCause();
+        String msg = t.getMessage() == null ? t.getClass().getSimpleName() : t.getMessage();
+        msg = msg.lines().findFirst().orElse("").trim();
+        return msg.length() > 200 ? msg.substring(0, 200) : msg;
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)

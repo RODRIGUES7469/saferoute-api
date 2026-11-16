@@ -12,5 +12,5 @@ WORKDIR /app
 COPY --from=build /app/target/saferoute-api.jar app.jar
 EXPOSE 8080
 # Limite de memória pensado para o plano gratuito do Render (512 MB)
-ENV JAVA_OPTS="-Xmx300m -Xss512k"
+ENV JAVA_OPTS="-Xmx300m -Xss512k -Duser.timezone=America/Sao_Paulo -Doracle.jdbc.timezoneAsRegion=false"
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
